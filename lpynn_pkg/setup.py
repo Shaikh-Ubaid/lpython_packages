@@ -14,7 +14,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="lpnn",                                                # name of project
+    name="lpynn",                                               # name of project
     install_requires=REQUIRED_PACKAGES,                         # all requirements used by this package
     version=VERSION,                                            # project version, read from version.py
     author="Ubaid Shaikh",                                      # Author, shown on PyPI
