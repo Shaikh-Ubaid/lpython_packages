@@ -5,7 +5,7 @@ This is a repository to hold source code of packages built for the [LPython](htt
 Currently, we have the following packages:
 - **lnn:** A basic neural networks python package
 - **lpdraw:** A simple python drawing package
-- **lpy:** Package for adding type information to python code
+- **ltypes:** Package for adding type information to python code
 - **nrp:** A package for root computation of mathematical functions
 
 # Build instructions

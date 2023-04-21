@@ -8,7 +8,7 @@ This package can display the output on terminal as well as visually appealing gr
 **Example:**
 ```python
 from lpdraw import Line, Circle, Clear, DisplayTerminal
-from lpy import i32, Const
+from ltypes import i32, Const
 
 from numpy import empty, int32
 
