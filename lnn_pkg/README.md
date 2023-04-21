@@ -6,7 +6,7 @@ This is a basic neural network package consisting of a single perceptron node. I
 **Example:**
 ```python
 from lnn.perceptron import init_perceptron, print_perceptron, normalize_input_vectors, Perceptron, train_dataset
-from lpython import i32, f64
+from lpy import i32, f64
 
 def main0():
     p: Perceptron = Perceptron(0, [0.0], 0.0, 0, 0.0, 0.0, 0)
