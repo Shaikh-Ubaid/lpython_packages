@@ -1,4 +1,4 @@
-from ltypes import dataclass, i32, f64
+from lptypes import dataclass, i32, f64
 
 @dataclass
 class Perceptron:

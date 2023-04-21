@@ -10,7 +10,7 @@ The user needs to supply an initial root guess, the function as well as the firs
 **Example:**
 ```python
 from nrp import newton_raphson
-from ltypes import f64, i32
+from lptypes import f64, i32
 
 
 def check():
