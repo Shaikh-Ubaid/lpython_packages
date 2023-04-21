@@ -1,11 +1,11 @@
-# lnn
+# lpnn
 
 This is a basic neural network package consisting of a single perceptron node. It can do binary classification.
 ## Usage
 
 **Example:**
 ```python
-from lnn.perceptron import init_perceptron, print_perceptron, normalize_input_vectors, Perceptron, train_dataset
+from lpnn.perceptron import init_perceptron, print_perceptron, normalize_input_vectors, Perceptron, train_dataset
 from lptypes import i32, f64
 
 def main0():
