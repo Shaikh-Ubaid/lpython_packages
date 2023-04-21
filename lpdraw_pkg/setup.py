@@ -22,7 +22,7 @@ setuptools.setup(
     description="A simple python drawing package",              # Short description of project
     long_description=long_description,                          # Long description, shown on PyPI
     long_description_content_type="text/markdown",              # Content type. Here, we used a markdown file.
-    url="https://github.com/Shaikh-Ubaid/lpdraw",               # github path
+    url="https://github.com/Shaikh-Ubaid/lpython_packages",     # github path
     packages=setuptools.find_packages(),                        # automatically finds packages in the current directory. You can also explictly list them.
     classifiers=[                                               # Classifiers give pip metadata about your project. See https://pypi.org/classifiers/ for a list of available classifiers.
         "Programming Language :: Python :: 3",

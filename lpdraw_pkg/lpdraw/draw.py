@@ -1,4 +1,4 @@
-from lpython import i32, f64, TypeVar
+from lpy import i32, f64, TypeVar
 
 H = TypeVar("H")
 W = TypeVar("W")

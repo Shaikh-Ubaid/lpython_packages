@@ -1,79 +1,25 @@
-# lpdraw
+# lnn
 
-This is a simple drawing package that contains Line and Circle Drawing Algorithms.
-This package can display the output on terminal as well as visually appealing grayscale image.
-
+This is a basic neural network package consisting of a single perceptron node. It can do binary classification.
 ## Usage
 
 **Example:**
 ```python
-from lpdraw import Line, Circle, Clear, DisplayTerminal
-from lpython import i32, Const
+from lnn.perceptron import init_perceptron, print_perceptron, normalize_input_vectors, Perceptron, train_dataset
+from lpython import i32, f64
 
-from numpy import empty, int32
+def main0():
+    p: Perceptron = Perceptron(0, [0.0], 0.0, 0, 0.0, 0.0, 0)
+    init_perceptron(p, 2, 0.05, 10000, 90.0)
+    print_perceptron(p)
+    print("=================================")
 
-def main():
-    Width: Const[i32] = 100 # x-axis limits [0, 99]
-    Height: Const[i32] = 40 # y-axis limits [0, 39]
-    Screen: i32[Height, Width] = empty((Height, Width), dtype=int32)
+    input_vectors: list[list[f64]] = [[-1.0, -1.0], [-1.0, 1.0], [1.0, -1.0], [1.0, 1.0]]
+    outputs: list[i32] = [1, 1, 1, -1]
 
-    Clear(Height, Width, Screen)
-    Line(Height, Width, Screen, 2, 4, 99, 11)
-    Line(Height, Width, Screen, 0, 39, 49, 0)
-    Circle(Height, Width, Screen, 52, 20, 6.0)
-    DisplayTerminal(Height, Width, Screen)
+    normalize_input_vectors(input_vectors)
+    train_dataset(p, input_vectors, outputs)
+    print_perceptron(p)
 
-main()
-```
-**Output:**
-```bash
-$ python main.py
-+----------------------------------------------------------------------------------------------------+
-|.                                                                                                   |
-| .                                                                                                  |
-|  ..                                                                                                |
-|    .                                                                                               |
-|     .                                                                                              |
-|      .                                                                                             |
-|       ..                                                                                           |
-|         .                                                                                          |
-|          .                                                                                         |
-|           .                                                                                        |
-|            ..                                                                                      |
-|              .                                                                                     |
-|               .                                                                                    |
-|                .                                   .                                               |
-|                 ..                               .. ..                                             |
-|                   .                             .     .                                            |
-|                    .                           .       .                                           |
-|                     .                         .         .                                          |
-|                      ..                       .         .                                          |
-|                        .                     .           .                                         |
-|                         .                     .         .                                          |
-|                          ..                   .         .                                          |
-|                            .                   .       .                                           |
-|                             .                   .     .                                            |
-|                              .                   .. ..                                             |
-|                               ..                   .                                               |
-|                                 .                                                                  |
-|                                  .                                                                 |
-|                                   .                                                         .......|
-|                                    ..                                         ..............       |
-|                                      .                          ..............                     |
-|                                       .           ..............                                   |
-|                                     ..............                                                 |
-|                       ..............    ..                                                         |
-|         ..............                    .                                                        |
-|  .......                                   .                                                       |
-|                                             .                                                      |
-|                                              ..                                                    |
-|                                                .                                                   |
-|                                                 .                                                  |
-+----------------------------------------------------------------------------------------------------+
-```
-
-You can also use the `Display()` provided in this package to generate a grascale `.pgm` image. You need to save the output produced on execution to a `.pgm` file. For example,
-
-```bash
-python main.py > img.pgm
+main0()
 ```

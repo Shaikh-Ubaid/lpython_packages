@@ -5,7 +5,7 @@ import setuptools
 
 # Define required packages. Alternatively, these could be defined in a separate
 # file and read in here.
-REQUIRED_PACKAGES=["numpy"]
+REQUIRED_PACKAGES=["lpy"]
 
 VERSION="0.0.1"
 
@@ -14,15 +14,15 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="lpdraw",                                              # name of project
+    name="nrp",                                                 # name of project
     install_requires=REQUIRED_PACKAGES,                         # all requirements used by this package
     version=VERSION,                                            # project version, read from version.py
-    author="Ubaid Shaikh",                                      # Author, shown on PyPI
-    author_email="shaikhubaid769@gmail.com",                    # Author email
-    description="A simple python drawing package",              # Short description of project
+    author="Smit Lunagariya",                                   # Author, shown on PyPI
+    author_email="smitlunagariya.mat18@itbhu.ac.in",            # Author email
+    description="A package for root computation of functions",  # Short description of project
     long_description=long_description,                          # Long description, shown on PyPI
     long_description_content_type="text/markdown",              # Content type. Here, we used a markdown file.
-    url="https://github.com/Shaikh-Ubaid/lpdraw",               # github path
+    url="https://github.com/Shaikh-Ubaid/lpython_packages",     # github path
     packages=setuptools.find_packages(),                        # automatically finds packages in the current directory. You can also explictly list them.
     classifiers=[                                               # Classifiers give pip metadata about your project. See https://pypi.org/classifiers/ for a list of available classifiers.
         "Programming Language :: Python :: 3",

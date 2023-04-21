@@ -1,79 +1,25 @@
-# lpdraw
+# nrp
 
-This is a simple drawing package that contains Line and Circle Drawing Algorithms.
-This package can display the output on terminal as well as visually appealing grayscale image.
+This is a small package for computing roots of a given function using newton-raphson method.
+
+The user needs to supply an initial root guess, the function as well as the first derivative of the function as callbacks.
 
 ## Usage
 
+(We are actively adding supporting for passing functions as callback.)
 **Example:**
 ```python
-from lpdraw import Line, Circle, Clear, DisplayTerminal
-from lpython import i32, Const
+from nrp import newton_raphson
+from lpy import f64, i32
 
-from numpy import empty, int32
 
-def main():
-    Width: Const[i32] = 100 # x-axis limits [0, 99]
-    Height: Const[i32] = 40 # y-axis limits [0, 39]
-    Screen: i32[Height, Width] = empty((Height, Width), dtype=int32)
+def check():
+    x0: f64 = 20.0
+    c: f64 = 3.0
+    maxiter: i32 = 20
+    x: f64
+    x = newton_raphson(x0, c, maxiter)
+    assert abs(x - 3.0) < 1e-5
 
-    Clear(Height, Width, Screen)
-    Line(Height, Width, Screen, 2, 4, 99, 11)
-    Line(Height, Width, Screen, 0, 39, 49, 0)
-    Circle(Height, Width, Screen, 52, 20, 6.0)
-    DisplayTerminal(Height, Width, Screen)
-
-main()
-```
-**Output:**
-```bash
-$ python main.py
-+----------------------------------------------------------------------------------------------------+
-|.                                                                                                   |
-| .                                                                                                  |
-|  ..                                                                                                |
-|    .                                                                                               |
-|     .                                                                                              |
-|      .                                                                                             |
-|       ..                                                                                           |
-|         .                                                                                          |
-|          .                                                                                         |
-|           .                                                                                        |
-|            ..                                                                                      |
-|              .                                                                                     |
-|               .                                                                                    |
-|                .                                   .                                               |
-|                 ..                               .. ..                                             |
-|                   .                             .     .                                            |
-|                    .                           .       .                                           |
-|                     .                         .         .                                          |
-|                      ..                       .         .                                          |
-|                        .                     .           .                                         |
-|                         .                     .         .                                          |
-|                          ..                   .         .                                          |
-|                            .                   .       .                                           |
-|                             .                   .     .                                            |
-|                              .                   .. ..                                             |
-|                               ..                   .                                               |
-|                                 .                                                                  |
-|                                  .                                                                 |
-|                                   .                                                         .......|
-|                                    ..                                         ..............       |
-|                                      .                          ..............                     |
-|                                       .           ..............                                   |
-|                                     ..............                                                 |
-|                       ..............    ..                                                         |
-|         ..............                    .                                                        |
-|  .......                                   .                                                       |
-|                                             .                                                      |
-|                                              ..                                                    |
-|                                                .                                                   |
-|                                                 .                                                  |
-+----------------------------------------------------------------------------------------------------+
-```
-
-You can also use the `Display()` provided in this package to generate a grascale `.pgm` image. You need to save the output produced on execution to a `.pgm` file. For example,
-
-```bash
-python main.py > img.pgm
+check()
 ```

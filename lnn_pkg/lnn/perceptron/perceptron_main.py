@@ -1,5 +1,4 @@
-from lpython import dataclass, i32, f64
-from sys import exit
+from lpy import dataclass, i32, f64
 
 @dataclass
 class Perceptron:
@@ -59,9 +58,6 @@ def init_weights(size: i32) -> list[f64]:
     return weights
 
 def init_perceptron(p: Perceptron, n: i32, rate: f64, iterations_limit: i32, des_accuracy: f64):
-    if (n < 1 or n > 1000):
-        print("no_of_inputs must be between [1, 1000]")
-        exit(1)
     p.no_of_inputs = n
     p.weights = init_weights(n)
     p.learn_rate = rate
