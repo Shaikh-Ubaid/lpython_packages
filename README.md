@@ -3,7 +3,7 @@
 This is a repository to hold source code of packages built for the [LPython](https://github.com/lcompilers/lpython) compiler. Each individual package has its own **LICENSE** file.
 
 Currently, we have the following packages:
-- **lnn:** A basic neural networks python package
+- **lpynn:** A basic neural networks python package
 - **lpdraw:** A simple python drawing package
 - **lptypes:** Package for adding type information to python code
 - **nrp:** A package for root computation of mathematical functions
