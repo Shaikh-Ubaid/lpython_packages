@@ -7,7 +7,7 @@ import setuptools
 # file and read in here.
 REQUIRED_PACKAGES=[]
 
-VERSION="0.0.2"
+VERSION="0.0.2.1"
 
 # Read in the project description. We define this in the README file.
 with open("README.md", "r") as fh:
