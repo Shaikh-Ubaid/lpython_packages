@@ -5,9 +5,9 @@ import setuptools
 
 # Define required packages. Alternatively, these could be defined in a separate
 # file and read in here.
-REQUIRED_PACKAGES=["lptypes"]
+REQUIRED_PACKAGES=[]
 
-VERSION="0.0.1"
+VERSION="0.0.2"
 
 # Read in the project description. We define this in the README file.
 with open("README.md", "r") as fh:
