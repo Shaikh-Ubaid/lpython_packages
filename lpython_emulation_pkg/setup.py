@@ -14,7 +14,9 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="lptypes",                                            # name of project
+    name="lpython_emulation",                                   # name of project
+    packages=['lpython_emulation'],
+    py_modules=['lpython_emulation.lpython'],
     install_requires=REQUIRED_PACKAGES,                         # all requirements used by this package
     version=VERSION,                                            # project version, read from version.py
     author="Ondrej Certik",                                     # Author, shown on PyPI
@@ -23,7 +25,7 @@ setuptools.setup(
     long_description=long_description,                          # Long description, shown on PyPI
     long_description_content_type="text/markdown",              # Content type. Here, we used a markdown file.
     url="https://github.com/Shaikh-Ubaid/lpython_packages",     # github path
-    packages=setuptools.find_packages(),                        # automatically finds packages in the current directory. You can also explictly list them.
+    # packages=setuptools.find_packages(),                        # automatically finds packages in the current directory. You can also explictly list them.
     classifiers=[                                               # Classifiers give pip metadata about your project. See https://pypi.org/classifiers/ for a list of available classifiers.
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
