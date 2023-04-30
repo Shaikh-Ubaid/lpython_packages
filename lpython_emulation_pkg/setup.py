@@ -7,7 +7,7 @@ import setuptools
 # file and read in here.
 REQUIRED_PACKAGES=[]
 
-VERSION="0.0.1.1"
+VERSION="0.0.1.2"
 
 # Read in the project description. We define this in the README file.
 with open("README.md", "r") as fh:
@@ -15,8 +15,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="lpython_emulation",                                   # name of project
-    packages=['lpython_emulation'],
-    py_modules=['lpython_emulation.lpython'],
+    py_modules=['lpython'],
     install_requires=REQUIRED_PACKAGES,                         # all requirements used by this package
     version=VERSION,                                            # project version, read from version.py
     author="Ondrej Certik",                                     # Author, shown on PyPI

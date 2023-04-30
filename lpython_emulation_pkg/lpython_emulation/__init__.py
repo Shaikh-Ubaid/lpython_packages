@@ -1,1 +1,0 @@
-from .lpython import *
