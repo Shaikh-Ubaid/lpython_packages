@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(
-    name="pacakge1",
+    name="package1",
     packages=['package1'],
     py_modules=['package1.another_package'],
     install_requires=[],
