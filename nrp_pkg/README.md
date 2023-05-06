@@ -6,11 +6,11 @@ The user needs to supply an initial root guess, the function as well as the firs
 
 ## Usage
 
-(We are actively adding supporting for passing functions as callback.)
+(We are actively adding support for passing functions as callback.)
 **Example:**
 ```python
 from nrp import newton_raphson
-from lptypes import f64, i32
+from lpython import f64, i32
 
 
 def check():

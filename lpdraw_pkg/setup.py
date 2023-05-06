@@ -5,7 +5,7 @@ import setuptools
 
 # Define required packages. Alternatively, these could be defined in a separate
 # file and read in here.
-REQUIRED_PACKAGES=["lptypes"]
+REQUIRED_PACKAGES=["lpython_emulation"]
 
 VERSION="0.0.1"
 

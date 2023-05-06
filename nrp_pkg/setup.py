@@ -5,9 +5,9 @@ import setuptools
 
 # Define required packages. Alternatively, these could be defined in a separate
 # file and read in here.
-REQUIRED_PACKAGES=["lptypes"]
+REQUIRED_PACKAGES=["lpython_emulation"]
 
-VERSION="0.0.1"
+VERSION="0.0.1.1"
 
 # Read in the project description. We define this in the README file.
 with open("README.md", "r") as fh:
@@ -19,7 +19,7 @@ setuptools.setup(
     version=VERSION,                                            # project version, read from version.py
     author="Smit Lunagariya",                                   # Author, shown on PyPI
     author_email="smitlunagariya.mat18@itbhu.ac.in",            # Author email
-    description="A package for root computation of functions",  # Short description of project
+    description="Package for root computation of math functions",# Short description of project
     long_description=long_description,                          # Long description, shown on PyPI
     long_description_content_type="text/markdown",              # Content type. Here, we used a markdown file.
     url="https://github.com/Shaikh-Ubaid/lpython_packages",     # github path
