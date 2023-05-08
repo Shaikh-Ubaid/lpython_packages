@@ -9,19 +9,35 @@ from .goto import with_goto
 __slots__ = ["i8", "i16", "i32", "i64", "f32", "f64", "c32", "c64", "CPtr",
         "overload", "ccall", "TypeVar", "pointer", "c_p_pointer", "Pointer",
         "p_c_pointer", "vectorize", "inline", "Union", "static", "with_goto",
-        "packed", "Const", "sizeof", "ccallable"]
+        "packed", "Const", "sizeof", "ccallable", "ccallback", "Callable"]
 
 # data-types
+
+type_to_convert_func = {
+    "i8": int,
+    "i16": int,
+    "i32": int,
+    "i64": int,
+    "f32": float,
+    "f64": float,
+    "c32": complex,
+    "c64": complex,
+    "c_ptr": lambda x: x,
+    "Const": lambda x: x,
+    "Callable": lambda x: x,
+    "Pointer": lambda x: x,
+}
 
 class Type:
     def __init__(self, name):
         self._name = name
+        self._convert = type_to_convert_func[name]
 
     def __getitem__(self, params):
         return Array(self, params)
 
     def __call__(self, arg):
-        return arg
+        return self._convert(arg)
 
 def dataclass(arg):
     return py_dataclass(arg)
@@ -55,6 +71,7 @@ c32 = Type("c32")
 c64 = Type("c64")
 CPtr = Type("c_ptr")
 Const = ConstType("Const")
+Callable = Type("Callable")
 Union = ctypes.Union
 Pointer = PointerType("Pointer")
 
@@ -128,6 +145,9 @@ class OverloadedFunction:
 
 def overload(f):
     overloaded_f = OverloadedFunction(f)
+    overloaded_f.__name__ = f.__name__
+    overloaded_f.__code__ = f.__code__
+    overloaded_f.__annotations__ = f.__annotations__
     return overloaded_f
 
 # To be handled in ASR
@@ -212,6 +232,8 @@ def convert_type_to_ctype(arg):
         return c_float_complex
     elif arg == c64:
         return c_double_complex
+    elif arg == bool:
+        return ctypes.c_bool
     elif arg is None:
         raise NotImplementedError("Type cannot be None")
     elif isinstance(arg, Array):
@@ -233,6 +255,9 @@ def convert_numpy_dtype_to_ctype(arg):
     elif arg == np.int32:
         return ctypes.c_int32
     elif arg == np.int16:
+        return ctypes.c_int16
+    elif arg == np.uint16:
+        # TODO: once LPython supports unsigned, change this to unsigned:
         return ctypes.c_int16
     elif arg == np.int8:
         return ctypes.c_int8
@@ -272,9 +297,12 @@ class CTypes:
         self.name = f.__name__
         self.args = f.__code__.co_varnames
         self.annotations = f.__annotations__
-        crtlib = get_crtlib_path()
-        self.library = ctypes.CDLL(crtlib)
-        self.cf = self.library[self.name]
+        if "LPYTHON_PY_MOD_NAME" in os.environ:
+            crtlib = get_crtlib_path()
+            self.library = ctypes.CDLL(crtlib)
+            self.cf = self.library[self.name]
+        else:
+            self.cf = CTypes.emulations[self.name]
         argtypes = []
         for arg in self.args:
             arg_type = self.annotations[arg]
@@ -482,4 +510,7 @@ def sizeof(arg):
 def ccallable(f):
     if py_is_dataclass(f):
         return convert_to_ctypes_Structure(f)
+    return f
+
+def ccallback(f):
     return f
